@@ -9,13 +9,33 @@ steps:
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '3.10'
+  displayName: 'Uso de versión 3.10'
 
 - script: |
     python -m pip install --upgrade pip
     pip install requests
-  displayName: 'Instalar dependencias del script'
+  displayName: 'Instalar dependencias necesarias'
 
 - task: PythonScript@0
   inputs:
-    scriptSource: filePath
-    scriptPath: sendEmail.py
+    scriptSource: 'inline'
+    script: |
+      import requests
+      import os
+      
+      def call_api():
+          url = "https://api-colombia.com/api/v1/Department"
+          id = os.environ["id"]
+          try:
+              response = requests.get(url)
+              response.raise_for_status()
+      
+              data = response.json()
+              print(id)
+              print('Información de los departamentos de Colombia: \n {}'.format(data))
+              
+          except requests.exceptions.RequestException as e:
+              print("Error al llamar a la API:", e)
+      
+      call_api()
+  displayName: 'Prueba ejecución de Script en el mismo pipeline'
