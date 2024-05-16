@@ -6,7 +6,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  ID: $(ID)
+  ID: ${env:ID}
 
 steps:
 - task: UsePythonVersion@0
