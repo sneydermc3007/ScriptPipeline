@@ -6,7 +6,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  id: ${id}
+  ID: $(ID)
 
 steps:
 - task: UsePythonVersion@0
@@ -28,7 +28,7 @@ steps:
       
       def call_api():
           url = "https://api-colombia.com/api/v1/Department"
-          id = os.environ["id"]
+          id = os.environ["ID"]
           try:
               response = requests.get(url)
               response.raise_for_status()
