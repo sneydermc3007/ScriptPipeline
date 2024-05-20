@@ -5,7 +5,7 @@ import os
 def call_api():
     load_dotenv()
 
-    url = "https://wigaapimanagement.azure-api.net/deploymentEmail?despliegue={}".format(os.getenv("DEPLOYMENT"))
+    url = "https://wigaapimanagement.azure-api.net/deploymentEmail/correo?despliegue={}".format(os.getenv("DEPLOYMENT"))
     headers = {
         "Ocp-Apim-Subscription-Key": os.getenv("SUBSCRIPTION_KEY"),
         "id": os.getenv("ID"),
