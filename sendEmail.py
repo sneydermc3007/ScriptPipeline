@@ -13,7 +13,7 @@ def call_api():
     body = {
         "asunto": "Actualización Wigaming since SCRIPT EN PYTHON",
         "destinatarios": [ "sneider.caicedo@gmail.com" ],
-        "backlog": "Seguimiento y ajustes Wigaming F2"
+        "backlog": os.getenv("BACKLOG")
     }
 
     try:
